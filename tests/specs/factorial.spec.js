@@ -1,7 +1,7 @@
 const { Factorial } = require('../pageObject/factorial')
 const helper = require('../helper');
 const { test, expect } = require('@playwright/test');
-const { errorText, redColor, termAndConditionsText, privacyText } = require('../valueData');
+const { errorText, redColor, termAndConditionsText, privacyText, pageTitle } = require('../valueData');
 
 test.describe('API tests', () => {
     test('check the correctness of the calculation through api', async () => {
@@ -10,16 +10,13 @@ test.describe('API tests', () => {
         await helper.checkApi(2);
         await helper.checkApi(60);
         await helper.checkApi(200);
-
     });
-
 });
 
 
 test.describe('UI tests', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('https://qainterview.pythonanywhere.com/');
-
     });
 
 
@@ -71,7 +68,7 @@ test.describe('UI tests', () => {
 
 
     test('check page title', async ({ page }) => {
-        await expect(page).toHaveTitle('Factoriall');
+        await expect(page).toHaveTitle(pageTitle);
     });
 
     test('check error message when enter string in input', async ({ page }) => {

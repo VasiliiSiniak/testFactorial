@@ -16,8 +16,6 @@ exports.Factorial = class Factorial {
 
     async inputInInputForm(data) {
         await this.inputForm.fill(data)
-
-
     }
 
     async clickSubmitButton() {
