@@ -13,9 +13,6 @@ class Helper {
         return result;
     };
 
-
-
-
     async checkApi(number) {
         await fetch("https://qainterview.pythonanywhere.com/factorial", {
             "headers": {
@@ -29,7 +26,6 @@ class Helper {
                 expect(result.answer).to.eq(this.factorial(number))
             })
     }
-
 }
 
 module.exports = new Helper();

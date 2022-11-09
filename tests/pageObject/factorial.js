@@ -9,11 +9,6 @@ exports.Factorial = class Factorial {
         this.termAndPrivacyPages = page.locator('//body');
     }
 
-
-
-
-
-
     async inputInInputForm(data) {
         await this.inputForm.fill(data)
     }
