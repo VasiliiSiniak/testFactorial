@@ -66,6 +66,22 @@ test.describe('UI tests', () => {
         expect(await factorial.getResultValue()).toBe(helper.factorial(200));
     });
 
+    test.only('check of the correctness of factorial calculation with space before number', async ({ page }) => {
+        const factorial = new Factorial(page);
+
+        await factorial.inputInInputForm('     3');
+        await factorial.clickSubmitButton();
+        await page.waitForTimeout(1000)
+        expect(await factorial.getResultValue()).toBe(helper.factorial(3));
+    });
+
+    test('check error message when input is empty', async ({ page }) => {
+        const factorial = new Factorial(page);
+
+        await factorial.clickSubmitButton();
+        await page.waitForTimeout(1000)
+        await expect(factorial.resultText).toHaveText(errorText)
+    });
 
     test('check page title', async ({ page }) => {
         await expect(page).toHaveTitle(pageTitle);
